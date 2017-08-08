@@ -5,3 +5,5 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
 const router = express.Router();
+
+module.exports = router;

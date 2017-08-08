@@ -13,18 +13,11 @@ const Messages = db.messages;
 
 const PORT = process.env.PORT || 8080;
 
-const usersRouter = require('./routes/users.js');
-const topicsRouter = require('./routes/topics.js');
-const messagesRouter = require('./routes/messages.js');
-
-app.use(express.static('./public'));
-app.use('/api', require('/api/index.js'));
+app.use(express.static('public'));
+app.use('/api', require('./api/index.js'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-// app.use('/', usersRouter);
-// app.use('/', topicsRouter);
-// app.use('/', messagesRouter);
 
 app.get('/', (req, res) => {
   console.log('hello');
