@@ -19,6 +19,10 @@ app.use('/api', require('./api/index.js'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+app.get('*', (req, res) => {
+  res.sendFile('./public/index.html', { root: __dirname });
+});
+
 app.get('/', (req, res) => {
   console.log('hello');
 });
