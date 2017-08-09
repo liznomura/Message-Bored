@@ -23,10 +23,6 @@ app.get('*', (req, res) => {
   res.sendFile('./public/index.html', { root: __dirname });
 });
 
-app.get('/', (req, res) => {
-  console.log('hello');
-});
-
 app.listen(PORT, () => {
   db.sequelize.sync({ force: true });
   console.log(`Server running on ${PORT}`);

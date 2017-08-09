@@ -11,19 +11,18 @@ msgApp
     templateUrl: 'home.html',
     controller: 'HomeController'
   })
-  // .when('/books', {
-  //   templateUrl: 'book.html',
-  //   controller: 'BookController'
+  // .when('/register', {
+  //   templateUrl: 'register.html',
+  //   controller: 'RegController'
   // })
-  // .when('/movies', {
-  //   templateUrl: 'movie.html',
-  //   controller: 'MovieController'
-  // })
+  .when('/users', {
+    templateUrl: 'users.html',
+    controller: 'UsersController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
+    enabled: true
   });
 }])
 .run(function(){

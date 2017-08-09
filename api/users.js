@@ -13,27 +13,26 @@ const Topics = db.topics;
 const Messages = db.messages;
 
 router.get('/users', (req, res) => {
-  findAllUsers(req, res);
+  return Users.findAll()
+  .then(users => {
+    const usersData = users.map(user => {
+      return {
+        name: user.name
+      };
+    });
+    return res.json(usersData);
+  });
 });
 
-router.post('/users', (req, res) => {
+// router.post('/users', (req, res) => {
 
-});
+// });
 
 module.exports = router;
 
-
-
-function findAllUsers(req, res) {
-  return Users.findAll()
-  .then(photos => {
-    console.log(photos);
-  });
-}
-
-function createNewUser(req, res) {
-  return Users.create(
-  {
-    name: req.body.name
-  });
-}
+// function createNewUser(req, res) {
+//   return Users.create(
+//   {
+//     name: req.body.name
+//   });
+// }
