@@ -8,8 +8,7 @@ msgApp.controller(
       let user = { name: $scope.user.name };
       AuthService.createNewUser(user)
       .then(function(user) {
-        console.log(users);
-        $scope.name = '';
+        $scope.user.name = '';
       });
     };
   }]);

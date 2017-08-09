@@ -5,7 +5,7 @@ angular.module('msgApp')
       console.log('AuthService');
       return $http.post('/api/users', user)
       .then(function(user) {
-        console.log(user);
+        return user;
       });
     }
   };
