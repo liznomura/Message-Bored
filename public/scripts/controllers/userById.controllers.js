@@ -3,8 +3,8 @@ angular.module('msgApp')
   'UserByIdController', ['$scope', 'UserService', '$routeParams', function($scope, UserService, $routeParams) {
     $scope.user = [];
     $scope.UserService = UserService;
-    var id = $routeParams;
-    UserService.getUserById(id)
+    var route = $routeParams;
+    UserService.getUserById(route)
     .then(function(user) {
       $scope.user = user;
     });
