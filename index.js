@@ -14,9 +14,9 @@ const Messages = db.messages;
 const PORT = process.env.PORT || 8080;
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 app.use('/api', require('./api/index.js'));
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 app.get('*', (req, res) => {

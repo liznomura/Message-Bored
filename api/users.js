@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 
 const router = express.Router();
 
+
 const db = require('../models');
 const Users = db.users;
 const Topics = db.topics;
@@ -21,6 +22,16 @@ router.get('/users', (req, res) => {
       };
     });
     return res.json(usersData);
+  });
+});
+
+router.post('/users', (req, res) => {
+  console.log('hitting express side');
+  console.log(req.body);
+  return Users.create(
+    { name: req.body.name })
+  .then(user => {
+    return res.json(user);
   });
 });
 
