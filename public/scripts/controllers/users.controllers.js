@@ -1,27 +1,11 @@
-/*jshint esversion:6*/
-msgApp.controller(
-  'UsersController', ['$scope', 'AuthService', function($scope, AuthService) {
+angular.module('msgApp')
+.controller(
+  'UsersController', ['$scope', 'UserService', function($scope, UserService) {
     $scope.users = [];
-    $scope.AuthService = AuthService;
+    $scope.UserService = UserService;
     UserService.getUsers()
     .then(function(users) {
       console.log(users);
       $scope.users = users;
     });
   }]);
-
-
-// myApp.controller(
-//   'BookController', ['$scope', 'BookService', function($scope, BookService) {
-//   $scope.newBook = { title: '', author: '' };
-//   $scope.BookService = BookService;
-//   $scope.addBook = function() {
-//     var newBook = {
-//       title: $scope.newBook.title,
-//       author: $scope.newBook.author
-//     };
-//     BookService.addBook(newBook);
-//     $scope.newBook.title = '';
-//     $scope.newBook.author = '';
-//   };
-// }]);

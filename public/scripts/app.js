@@ -19,6 +19,10 @@ msgApp
     templateUrl: 'users.html',
     controller: 'UsersController'
   })
+  .when('/users/:id', {
+    templateUrl: 'user.html',
+    controller: 'UserByIdController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode({
