@@ -13,19 +13,3 @@ msgApp.controller(
       });
     };
   }]);
-
-
-// myApp.controller(
-//   'BookController', ['$scope', 'BookService', function($scope, BookService) {
-//   $scope.newBook = { title: '', author: '' };
-//   $scope.BookService = BookService;
-//   $scope.addBook = function() {
-//     var newBook = {
-//       title: $scope.newBook.title,
-//       author: $scope.newBook.author
-//     };
-//     BookService.addBook(newBook);
-//     $scope.newBook.title = '';
-//     $scope.newBook.author = '';
-//   };
-// }]);

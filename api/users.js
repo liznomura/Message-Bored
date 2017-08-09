@@ -25,25 +25,41 @@ router.get('/users', (req, res) => {
   });
 });
 
+router.get('/users/:id', (req, res) => {
+  let userId = req.params.id;
+  return Users.findById(userId)
+  .then(user => {
+    let userData = {
+      id: user.id,
+      name: user.name
+    };
+    return userData;
+  })
+  .then(userData => {
+    return Messages.findAll({ where: { author_id: userData.id } })
+    .then(msg => {
+      userData.messages = [];
+      msg.forEach(message => {
+        let msgObj = {
+          id: message.id,
+          body: message.body,
+          topic_id: message.topic_id,
+          author_id: message.author_id
+        };
+
+        userData.messages.push(msgObj);
+      });
+      return res.json(userData);
+    });
+  });
+});
+
 router.post('/users', (req, res) => {
-  console.log('hitting express side');
-  console.log(req.body);
-  return Users.create(
-    { name: req.body.name })
+  return Users.create({ name: req.body.name })
   .then(user => {
     return res.json(user);
   });
 });
 
-// router.post('/users', (req, res) => {
-
-// });
-
 module.exports = router;
 
-// function createNewUser(req, res) {
-//   return Users.create(
-//   {
-//     name: req.body.name
-//   });
-// }
