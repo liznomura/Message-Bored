@@ -23,6 +23,10 @@ msgApp
     templateUrl: 'user.html',
     controller: 'UserByIdController'
   })
+  .when('/topics', {
+    templateUrl: 'topics.html',
+    controller: 'TopicsController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode({
