@@ -65,4 +65,14 @@ router.post('/users', (req, res) => {
   });
 });
 
+router.post('/login', (req, res) => {
+  return Users.findOne({ where: { name: req.body.name }})
+  .then(user => {
+    if(!user) {
+      return res.json('loginErr');
+    }
+    return res.json(user);
+  });
+});
+
 module.exports = router;

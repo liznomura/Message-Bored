@@ -11,6 +11,10 @@ msgApp
     templateUrl: 'home.html',
     controller: 'HomeController'
   })
+  .when('/login', {
+    templateUrl: 'login.html',
+    controller: 'LoginController'
+  })
   .when('/register', {
     templateUrl: 'register.html',
     controller: 'RegController'
