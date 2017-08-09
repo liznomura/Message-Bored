@@ -8,8 +8,8 @@ angular.module('msgApp')
       });
     },
 
-    getUserById: function() {
-      return $http.get('/api/users/:id')
+    getUserById: function(route) {
+      return $http.get('/api/users/' + route.id)
       .then(function(user) {
         return user.data;
       });

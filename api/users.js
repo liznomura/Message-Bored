@@ -26,9 +26,10 @@ router.get('/users', (req, res) => {
 });
 
 router.get('/users/:id', (req, res) => {
-  let userId = req.params.id;
+  let userId = parseInt(req.params.id);
   return Users.findById(userId)
   .then(user => {
+    console.log('first then');
     let userData = {
       id: user.id,
       name: user.name
