@@ -6,6 +6,6 @@ angular.module('msgApp')
     var id = $routeParams;
     UserService.getUserById(id)
     .then(function(user) {
-      console.log(user);
+      $scope.user = user;
     });
   }]);

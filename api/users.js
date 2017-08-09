@@ -4,6 +4,7 @@ const session = require('express-session');
 const sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const moment = require('moment');
 
 const router = express.Router();
 
@@ -29,7 +30,6 @@ router.get('/users/:id', (req, res) => {
   let userId = parseInt(req.params.id);
   return Users.findById(userId)
   .then(user => {
-    console.log('first then');
     let userData = {
       id: user.id,
       name: user.name
@@ -37,17 +37,20 @@ router.get('/users/:id', (req, res) => {
     return userData;
   })
   .then(userData => {
-    return Messages.findAll({ where: { author_id: userData.id } })
+    return Messages.findAll({ where: { author_id: userData.id },  include: { model: Topics } })
     .then(msg => {
       userData.messages = [];
       msg.forEach(message => {
+        const dateTime = new Date(message.createdAt) / 1000;
+        const t = moment.unix(dateTime).format("MM-DD-YYYY HH:mm");
         let msgObj = {
           id: message.id,
           body: message.body,
           topic_id: message.topic_id,
-          author_id: message.author_id
+          author_id: message.author_id,
+          topic_name: message.topic.name,
+          created_at: t
         };
-
         userData.messages.push(msgObj);
       });
       return res.json(userData);
