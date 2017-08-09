@@ -41,8 +41,8 @@ router.get('/users/:id', (req, res) => {
     .then(msg => {
       userData.messages = [];
       msg.forEach(message => {
-        const dateTime = new Date(message.createdAt) / 1000;
-        const t = moment.unix(dateTime).format("MM-DD-YYYY HH:mm");
+        const unixTime = new Date(message.createdAt) / 1000;
+        const t = moment.unix(unixTime).format("MM-DD-YYYY HH:mm");
         let msgObj = {
           id: message.id,
           body: message.body,
