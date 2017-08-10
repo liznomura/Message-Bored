@@ -1,6 +1,6 @@
 angular.module('msgApp')
 .controller(
-  'LoginController', ['$scope', 'AuthService', function($scope, AuthService) {
+  'LoginController', ['$scope', '$window', 'AuthService', function($scope, $window, AuthService) {
     $scope.user = { name: '' };
     $scope.login = function() {
       AuthService.login($scope.user)
@@ -9,9 +9,12 @@ angular.module('msgApp')
           case 'loginErr':
           $scope.errorMessage = 'User does not exist';
           break;
+
           default:
           $scope.errorMessage = false;
+
           AuthService.setUser(response);
+          $window.location.href ='/';
         }
       });
     };
