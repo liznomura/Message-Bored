@@ -13,4 +13,16 @@ const Users = db.users;
 const Topics = db.topics;
 const Messages = db.messages;
 
+router.get('/messages/latest', (req, res) => {
+  return Messages.findAll({
+    attributes: ['id', 'body', 'createdAt'],
+    include: [{ model: Topics, attributes: ['name']},
+     { model: Users, attributes: ['name']}],
+     limit: 10
+   })
+  .then(result => {
+    res.json(result);
+  });
+});
+
 module.exports = router;

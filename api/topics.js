@@ -15,7 +15,7 @@ const Messages = db.messages;
 
 router.get('/topics', (req, res) => {
   return Topics.findAll({
-    attributes: ['id','name', 'createdAt'],
+    attributes: ['id', 'name', 'createdAt'],
     include: [{ model: Users , attributes: ['name']}]
   })
   .then(topics => {
@@ -26,13 +26,9 @@ router.get('/topics/:id', (req, res) => {
   let topicId = req.params.id;
   return Topics.findById(topicId, {
     attributes: ['id', 'name', 'createdAt'],
-    include: [{
-      model: Messages,
-      attributes: ['body', 'createdAt'],
-      include: {
-        model: Users,
-        attributes: ['name', 'id']
-      }
+
+    include: [{ model: Messages, attributes: ['body', 'createdAt'],
+      include: { model: Users, attributes: ['name', 'id'] }
     },
     {
       model: Users,
