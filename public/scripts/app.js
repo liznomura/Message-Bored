@@ -15,6 +15,10 @@ msgApp
     templateUrl: 'login.html',
     controller: 'LoginController'
   })
+  .when('/logout', {
+    templateUrl: 'logout.html',
+    controller: 'LogoutController'
+  })
   .when('/register', {
     templateUrl: 'register.html',
     controller: 'RegController'

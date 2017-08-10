@@ -16,11 +16,13 @@ angular.module('msgApp')
     },
 
     setUser: function(user) {
-      localStorage.setItem('user', user.name);
+      localStorage.setItem('user_id', user.id);
+      localStorage.setItem('loggedIn', true);
     },
 
-    logout: function(user) {
-      localStorage.removeItem('user');
+    logout: function() {
+      localStorage.removeItem('user_id');
+      localStorage.setItem('loggedIn', '');
     }
   };
 }]);

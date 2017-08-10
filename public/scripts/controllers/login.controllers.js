@@ -2,7 +2,6 @@ angular.module('msgApp')
 .controller(
   'LoginController', ['$scope', 'AuthService', function($scope, AuthService) {
     $scope.user = { name: '' };
-    $scope.AuthService = AuthService;
     $scope.login = function() {
       AuthService.login($scope.user)
       .then(function(response) {
@@ -17,17 +16,3 @@ angular.module('msgApp')
       });
     };
   }]);
-
-// msgApp.controller(
-//   'RegController', ['$scope', 'AuthService', function($scope, AuthService) {
-//     $scope.user = { name: '' };
-//     $scope.AuthService = AuthService;
-
-//     $scope.createNewUser = function() {
-//       var user = { name: $scope.user.name };
-//       AuthService.createNewUser(user)
-//       .then(function(user) {
-//         $scope.user.name = '';
-//       });
-//     };
-//   }]);
