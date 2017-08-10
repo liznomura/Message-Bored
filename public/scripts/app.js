@@ -35,6 +35,10 @@ msgApp
     templateUrl: 'topic-detail.html',
     controller: 'TopicDetailController'
   })
+  .when('/latest', {
+    templateUrl: 'latest.html',
+    controller: 'LatestController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode({

@@ -4,7 +4,6 @@ angular.module('msgApp')
     $scope.users = [];
     UserService.getUsers()
     .then(function(users) {
-      console.log(users);
       $scope.users = users;
     });
   }]);
