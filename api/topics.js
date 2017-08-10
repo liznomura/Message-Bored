@@ -14,40 +14,70 @@ const Topics = db.topics;
 const Messages = db.messages;
 
 router.get('/topics', (req, res) => {
-  return Topics.findAll({ include: Users })
+  return Topics.findAll({
+    attributes: ['id','name', 'createdAt'],
+    include: [{ model: Users , attributes: ['name']}]
+  })
   .then(topics => {
-    const topicsData = topics.map(topic => {
-      let unixTime = new Date(topic.createdAt) / 1000;
-      let t = moment.unix(unixTime).format("MM-DD-YYYY HH:mm");
-
-      return {
-        id: topic.id,
-        name: topic.name,
-        created_at: t,
-        creator: topic.user.name
-      };
-    });
-
-    return res.json(topicsData);
+    res.json(topics);
   });
 });
-
 router.get('/topics/:id', (req, res) => {
-  let topicId = parseInt(req.params.id);
-
-  return Topics.findById(topicId,
-    { include: [
-    {
+  let topicId = req.params.id;
+  return Topics.findById(topicId, {
+    attributes: ['id', 'name', 'createdAt'],
+    include: [{
       model: Messages,
-      where: { topic_id: topicId },
+      attributes: ['body', 'createdAt'],
       include: {
-        model: Users
+        model: Users,
+        attributes: ['name', 'id']
       }
-    }]})
+    },
+    {
+      model: Users,
+      attributes: ['name', 'id']}]
+    })
   .then(result => {
-    console.log(result.messages[0].user);
+    res.json(result);
   });
 });
+
+// router.get('/topics', (req, res) => {
+//   return Topics.findAll({ include: Users })
+//   .then(topics => {
+//     const topicsData = topics.map(topic => {
+//       let unixTime = new Date(topic.createdAt) / 1000;
+//       let t = moment.unix(unixTime).format("MM-DD-YYYY HH:mm");
+
+//       return {
+//         id: topic.id,
+//         name: topic.name,
+//         created_at: t,
+//         creator: topic.user.name
+//       };
+//     });
+
+//     return res.json(topicsData);
+//   });
+// });
+
+// router.get('/topics/:id', (req, res) => {
+//   let topicId = parseInt(req.params.id);
+
+//   return Topics.findById(topicId,
+//     { include: [
+//     {
+//       model: Messages,
+//       where: { topic_id: topicId },
+//       include: {
+//         model: Users
+//       }
+//     }]})
+//   .then(result => {
+//     console.log(result.messages[0].user);
+//   });
+// });
 
 router.post('/topics', (req, res) => {
   return Topics.create({
