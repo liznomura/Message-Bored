@@ -32,6 +32,23 @@ router.get('/topics', (req, res) => {
   });
 });
 
+router.get('/topics/:id', (req, res) => {
+  let topicId = parseInt(req.params.id);
+
+  return Topics.findById(topicId,
+    { include: [
+    {
+      model: Messages,
+      where: { topic_id: topicId },
+      include: {
+        model: Users
+      }
+    }]})
+  .then(result => {
+    console.log(result.messages[0].user);
+  });
+});
+
 router.post('/topics', (req, res) => {
   return Topics.create({
     name: req.body.name,

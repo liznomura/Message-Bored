@@ -29,7 +29,11 @@ msgApp
   })
   .when('/new-topic', {
     templateUrl: 'new-topic.html',
-    controller: 'newTopicController'
+    controller: 'NewTopicController'
+  })
+  .when('/topics/:id', {
+    templateUrl: 'topic-detail.html',
+    controller: 'TopicDetailController'
   })
   .otherwise({ redirectTo: '/' });
 

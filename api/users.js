@@ -14,49 +14,23 @@ const Users = db.users;
 const Topics = db.topics;
 const Messages = db.messages;
 
+
 router.get('/users', (req, res) => {
-  return Users.findAll()
-  .then(users => {
-    const usersData = users.map(user => {
-      return {
-        name: user.name
-      };
-    });
-    return res.json(usersData);
-  });
+  return Users.findAll({ attributes: ['id', 'name']}).then(users => { res.json(users); });
 });
 
+
 router.get('/users/:id', (req, res) => {
-  let userId = parseInt(req.params.id);
-  return Users.findById(userId)
-  .then(user => {
-    let userData = {
-      id: user.id,
-      name: user.name
-    };
-    return userData;
-  })
-  .then(userData => {
-    return Messages.findAll({ where: { author_id: userData.id },  include: { model: Topics } })
-    .then(msg => {
-      userData.messages = [];
-      msg.forEach(message => {
-        const unixTime = new Date(message.createdAt) / 1000;
-        const t = moment.unix(unixTime).format("MM-DD-YYYY HH:mm");
-        let msgObj = {
-          id: message.id,
-          body: message.body,
-          topic_id: message.topic_id,
-          author_id: message.author_id,
-          topic_name: message.topic.name,
-          created_at: t
-        };
-        userData.messages.push(msgObj);
-      });
-      return res.json(userData);
-    });
-  });
+  let userId = req.params.id;
+  return Users.findById(userId, {
+    attributes: ['id', 'name'],
+    include: [{ model: Messages, attributes: ['body', 'createdAt'],
+    include: [{ model: Topics, attributes: ['name', 'id']
+  }]}]
+})
+  .then(result => { res.json(result); });
 });
+
 
 router.post('/users', (req, res) => {
   return Users.create({ name: req.body.name })
