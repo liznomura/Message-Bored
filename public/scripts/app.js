@@ -27,10 +27,6 @@ msgApp
     templateUrl: 'user.html',
     controller: 'UserByIdController'
   })
-  .when('/topics', {
-    templateUrl: 'topics.html',
-    controller: 'getTopicsController'
-  })
   .when('/new-topic', {
     templateUrl: 'new-topic.html',
     controller: 'newTopicController'
