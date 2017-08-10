@@ -1,6 +1,6 @@
 <div ng-if="isLoggedIn">
 <h1>Welcome Home, {{ loggedInUserName }}</h1>
-<a ng-href="/logout"><button>Logout</button></a>
+<button ng-click="logout()">Logout</button>
 </div>
 <div ng-if="!isLoggedIn">
 <a ng-href="/register"><button>Register</button></a>

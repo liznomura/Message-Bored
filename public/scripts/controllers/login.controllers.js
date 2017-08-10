@@ -14,7 +14,7 @@ angular.module('msgApp')
           $scope.errorMessage = false;
 
           AuthService.setUser(response);
-          $window.location.href ='/';
+          $window.location.href = '/';
         }
       });
     };

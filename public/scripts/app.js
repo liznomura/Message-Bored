@@ -15,10 +15,6 @@ msgApp
     templateUrl: 'login.html',
     controller: 'LoginController'
   })
-  .when('/logout', {
-    templateUrl: 'logout.html',
-    controller: 'LogoutController'
-  })
   .when('/register', {
     templateUrl: 'register.html',
     controller: 'RegController'
@@ -41,9 +37,14 @@ msgApp
     enabled: true
   });
 }])
-.run(['$rootScope', function($rootScope){
+.run(['$rootScope', '$window', 'AuthService', function($rootScope, $window, AuthService){
     $rootScope.isLoggedIn = localStorage.loggedIn;
     $rootScope.loggedInUserId = localStorage.user_id;
     $rootScope.loggedInUserName = localStorage.user;
+
+    $rootScope.logout = function() {
+      AuthService.logout();
+      $window.location.href = '/';
+    };
     console.log('running');
 }]);
