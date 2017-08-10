@@ -2,7 +2,6 @@
 const express = require('express');
 const session = require('express-session');
 const sequelize = require('sequelize');
-const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const moment = require('moment');
 

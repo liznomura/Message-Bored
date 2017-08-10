@@ -1,0 +1,5 @@
+<select name="topicSelect" ng-model="newMessage.topic_id">
+  <option ng-repeat="topic in topics" value="{{topic.id}}">
+    {{topic.name}}
+  </option>
+</select>

@@ -39,6 +39,10 @@ msgApp
     templateUrl: 'latest.html',
     controller: 'LatestController'
   })
+  .when('/new-message', {
+    templateUrl: 'new-message.html',
+    controller: 'NewMessageController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode({

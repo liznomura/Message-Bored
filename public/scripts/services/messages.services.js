@@ -6,14 +6,14 @@ angular.module('msgApp')
       .then(function(messages) {
          return messages.data;
       });
-    }
+    },
 
-    // createNewTopic: function(topic) {
-    //   return $http.post('/api/topics/', topic)
-    //   .then(function(topic) {
-    //     return topic.data;
-    //   });
-    // },
+    createNewMessage: function(message) {
+      return $http.post('/api/messages', message)
+      .then(function(message) {
+        return message.data;
+      });
+    }
 
     // getTopicDetail: function(route) {
     //   return $http.get('/api/topics/' + route.id)
