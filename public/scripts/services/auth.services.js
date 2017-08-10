@@ -17,11 +17,13 @@ angular.module('msgApp')
 
     setUser: function(user) {
       localStorage.setItem('user_id', user.id);
+      localStorage.setItem('user', user.name);
       localStorage.setItem('loggedIn', true);
     },
 
     logout: function() {
       localStorage.removeItem('user_id');
+      localStorage.removeItem('user');
       localStorage.setItem('loggedIn', '');
     }
   };

@@ -41,7 +41,9 @@ msgApp
     enabled: true
   });
 }])
-.run(function(){
-    // initialize
+.run(['$rootScope', function($rootScope){
+    $rootScope.isLoggedIn = localStorage.loggedIn;
+    $rootScope.loggedInUserId = localStorage.user_id;
+    $rootScope.loggedInUserName = localStorage.user;
     console.log('running');
-});
+}]);

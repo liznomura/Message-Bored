@@ -1,2 +1,8 @@
-<h1>Welcome Home, {{ currUser }}</h1>
-<a ng-href="/register">Register</a>
+<div ng-if="isLoggedIn">
+<h1>Welcome Home, {{ loggedInUserName }}</h1>
+<a ng-href="/logout"><button>Logout</button></a>
+</div>
+<div ng-if="!isLoggedIn">
+<a ng-href="/register"><button>Register</button></a>
+<a ng-href="/login"><button>Login</button></a>
+</div>
