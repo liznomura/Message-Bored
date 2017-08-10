@@ -8,10 +8,10 @@ angular.module('msgApp')
       });
     },
 
-    getTopicByName: function(route) {
-      return $http.get('/api/topics/' + route.name)
+    createNewTopic: function(topic) {
+      return $http.post('/api/topics/', topic)
       .then(function(topic) {
-        console.log(topic.data);
+        return topic.data;
       });
     }
   };

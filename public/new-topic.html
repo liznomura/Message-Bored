@@ -1,6 +1,2 @@
-<div class="nav">
-  <a ng-href="/">Home</a>
-</div>
-
-<input type="text" placeholder="username" ng-model="topic.name"><br>
-<button ng-click="createNewTopic()">Create New Topic</button>
+<input type="text" placeholder="Topic Name" ng-model="newTopic.name"><br>
+<button ng-click="createNewTopic(loggedInUserName)">Create New Topic</button>

@@ -33,10 +33,12 @@ router.get('/topics', (req, res) => {
 });
 
 router.post('/topics', (req, res) => {
-  console.log(req);
-  return Topics.create({ name: req.body.name })
+  return Topics.create({
+    name: req.body.name,
+    created_by: req.body.created_by
+  })
   .then(topic => {
-    console.log(topic);
+    return res.json(topic);
   });
 });
 

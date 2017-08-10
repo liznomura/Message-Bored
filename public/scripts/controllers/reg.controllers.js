@@ -1,13 +1,9 @@
 msgApp.controller(
-  'RegController', ['$scope', 'AuthService', function($scope, AuthService) {
+  'RegController', ['$scope', '$window', 'AuthService', function($scope, $window, AuthService) {
     $scope.user = { name: '' };
-    $scope.AuthService = AuthService;
-
     $scope.createNewUser = function() {
       var user = { name: $scope.user.name };
-      AuthService.createNewUser(user)
-      .then(function(user) {
-        $scope.user.name = '';
-      });
+      AuthService.createNewUser(user);
+      $window.location.href = '/login';
     };
   }]);
