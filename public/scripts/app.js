@@ -43,6 +43,10 @@ msgApp
     templateUrl: 'new-message.html',
     controller: 'NewMessageController'
   })
+  .when('/messages/by-topic/:id', {
+    templateUrl: 'message-by-topic.html',
+    controller: 'MessageByTopicController'
+  })
   .otherwise({ redirectTo: '/' });
 
   $locationProvider.html5Mode({

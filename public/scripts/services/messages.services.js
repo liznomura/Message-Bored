@@ -13,6 +13,13 @@ angular.module('msgApp')
       .then(function(message) {
         return message.data;
       });
+    },
+
+    getByTopic: function(topic) {
+      return $http.get('/api/messages/by-topic/' + topic.id)
+      .then(function(messages) {
+        return messages.data;
+      });
     }
   };
 }]);

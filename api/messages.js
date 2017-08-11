@@ -16,10 +16,10 @@ router.get('/messages/latest', (req, res) => {
   return Messages.findAll({
     attributes: ['id', 'body', 'createdAt'],
     include: [{ model: Topics, attributes: ['name']},
-     { model: Users, attributes: ['name']}],
-     limit: 10,
-     order: [['createdAt', 'DESC']]
-   })
+    { model: Users, attributes: ['name']}],
+    limit: 10,
+    order: [['createdAt', 'DESC']]
+  })
   .then(result => {
     res.json(result);
   });
@@ -45,9 +45,9 @@ router.get('/messages/by-topic/:topic_id', (req, res) => {
     include: [{ model: Users, attributes: ['name'] },
     { model: Topics, attributes: ['name'] }],
     order: [['createdAt']]
-    })
+  })
   .then(result => {
-    res.json(result);
+    return res.json(result);
   });
 });
 
