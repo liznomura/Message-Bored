@@ -14,12 +14,5 @@ angular.module('msgApp')
         return message.data;
       });
     }
-
-    // getTopicDetail: function(route) {
-    //   return $http.get('/api/topics/' + route.id)
-    //   .then(function(topic) {
-    //     return topic.data;
-    //   });
-    // }
   };
 }]);

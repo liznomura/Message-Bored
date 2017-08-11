@@ -17,7 +17,8 @@ router.get('/messages/latest', (req, res) => {
     attributes: ['id', 'body', 'createdAt'],
     include: [{ model: Topics, attributes: ['name']},
      { model: Users, attributes: ['name']}],
-     limit: 10
+     limit: 10,
+     order: [['createdAt', 'DESC']]
    })
   .then(result => {
     res.json(result);
@@ -25,7 +26,6 @@ router.get('/messages/latest', (req, res) => {
 });
 
 router.post('/messages', (req, res) => {
-  console.log(req.body);
   return Messages.create({
     body: req.body.msgBody,
     author_id: req.body.author_id,
@@ -35,6 +35,11 @@ router.post('/messages', (req, res) => {
     console.log('message', message);
     return res.json(message);
   });
+});
+
+router.get('/messages/by-topic/:topic_id', (req, res) => {
+  let topicId = req.params.id;
+  return Messages.find
 });
 
 module.exports = router;
