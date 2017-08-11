@@ -1,14 +1,16 @@
-angular.module('msgApp')
-.controller(
-  'NewMessageController', ['$scope', '$window', 'MessagesService', 'TopicsService', function($scope, $window, MessagesService, TopicsService) {
+angular.module("msgApp").controller("NewMessageController", [
+  "$scope",
+  "$window",
+  "MessagesService",
+  "TopicsService",
+  function($scope, $window, MessagesService, TopicsService) {
     $scope.newMessage = {
-      msgBody: '',
-      topic_id: ''
+      msgBody: "",
+      topic_id: ""
     };
 
     // on page load
-    TopicsService.getTopics()
-    .then(function(topics) {
+    TopicsService.getTopics().then(function(topics) {
       $scope.topics = topics;
     });
 
@@ -18,9 +20,9 @@ angular.module('msgApp')
         msgBody: $scope.newMessage.msgBody,
         author_id: localStorage.user_id
       };
-      MessagesService.createNewMessage(newMessage)
-      .then(function(result) {
-      $window.location.href = '/latest';
+      MessagesService.createNewMessage(newMessage).then(function(result) {
+        $window.location.href = "/latest";
       });
     };
-  }]);
+  }
+]);

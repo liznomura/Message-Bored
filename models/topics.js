@@ -1,7 +1,7 @@
 /*jshint esversion:6*/
-const Sequelize = require('sequelize');
-const Users = require('./users');
-const Messages = require('./messages');
+const Sequelize = require("sequelize");
+const Users = require("./users");
+const Messages = require("./messages");
 
 module.exports = function(sequelize, DataTypes) {
   var Topics = sequelize.define("topics", {
@@ -9,15 +9,15 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Topics.associate = function(models) {
-    Topics.belongsTo(models.users,  {
+    Topics.belongsTo(models.users, {
       foreignKey: {
-        name: 'created_by',
+        name: "created_by",
         allowNull: false
       }
     });
-    Topics.hasMany(models.messages,  {
+    Topics.hasMany(models.messages, {
       foreignKey: {
-        name: 'topic_id',
+        name: "topic_id",
         allowNull: false
       }
     });
