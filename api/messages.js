@@ -38,8 +38,17 @@ router.post('/messages', (req, res) => {
 });
 
 router.get('/messages/by-topic/:topic_id', (req, res) => {
-  let topicId = req.params.id;
-  return Messages.find
+  let topicId = req.params.topic_id;
+  return Messages.findAll({
+    where: { topic_id: topicId },
+    attributes: ['id', 'body', 'createdAt'],
+    include: [{ model: Users, attributes: ['name'] },
+    { model: Topics, attributes: ['name'] }],
+    order: [['createdAt']]
+    })
+  .then(result => {
+    res.json(result);
+  });
 });
 
 module.exports = router;
