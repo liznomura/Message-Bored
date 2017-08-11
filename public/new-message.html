@@ -1,0 +1,13 @@
+<label for="topicSelect">Topic: </label>
+<select name="topicSelect" ng-model="newMessage.topic_id">
+<option value="" selected disabled>Topics</option>
+  <option ng-repeat="topic in topics" value="{{topic.id}}">
+    {{topic.name}}
+  </option>
+</select>
+
+<br />
+<br />
+
+<textarea ng-model="newMessage.msgBody" placeholder="Body"></textarea>
+<div><button ng-click="createNewMessage()">Create New Message</button></div>
