@@ -1,3 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+$f: 'Source Sans Pro', sans-serif;
+$sml: 10px;
+
+$pink: #ff9697;
+$grey: #8b8b8b;
+
+@mixin trans {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+@mixin btn-bg($bg) {
+  border: none;
+  background: rgba($bg, .8);
+  color: white;
+
+  &:hover,
+  &:focus {
+    color: white;
+    background: $bg;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $f;
+}
+
+.mainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
 ul {
   list-style-type: none;
   list-style-position: inside;
@@ -5,6 +43,54 @@ ul {
   padding: 0;
 }
 
+li {
+  text-align: center;
+
+  &.login {
+    padding: 5px;
+
+    input {
+      margin: 5px;
+    }
+
+    small {
+      font-size: $sml;
+    }
+  }
+}
+
+button {
+  background-color: white;
+  border: 1px solid $grey;
+  cursor: pointer;
+  @include trans;
+
+  &:hover {
+    color: $pink;
+  }
+
+  &[class*="topicBtn"] {
+    @include btn-bg(#93939B);
+  }
+}
+
+a {
+  color: $grey;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  @include trans;
+
+  &:hover,
+  &:focus {
+    color: $pink;
+  }
+}
+
 .nav {
-  float: left;
+  box-sizing: border-box;
+  padding-left: 10px;
+  margin-right: 10px;
+  width: 150px;
 }

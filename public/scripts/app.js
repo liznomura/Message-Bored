@@ -11,8 +11,8 @@ msgApp
     function($routeProvider, $locationProvider) {
       $routeProvider
         .when("/", {
-          templateUrl: "home.html",
-          controller: "HomeController"
+          templateUrl: "latest.html",
+          controller: "LatestController"
         })
         .when("/login", {
           templateUrl: "login.html",

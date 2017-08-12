@@ -20,6 +20,7 @@ angular.module("msgApp").controller("NewMessageController", [
         msgBody: $scope.newMessage.msgBody,
         author_id: localStorage.user_id
       };
+      console.log(newMessage);
       MessagesService.createNewMessage(newMessage).then(function(result) {
         $window.location.href = "/latest";
       });

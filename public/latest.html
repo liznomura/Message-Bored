@@ -1,5 +1,6 @@
 <div ng-repeat="message in messages">
-  <p><b>{{ message.topic.name }}</b></p>
-  <p>{{ message.body }}</p>
+  <button class="topicBtn {{ message.topic.name }}">{{ message.topic.name }}</button>
+  {{ message.body }}
+  <br />
   <small>created on {{ message.createdAt }} by {{ message.user.name }}</small>
 </div>
