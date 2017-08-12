@@ -12,18 +12,6 @@ $grey: #8b8b8b;
   transition: all 0.3s;
 }
 
-@mixin btn-bg($bg) {
-  border: none;
-  background: rgba($bg, .8);
-  color: white;
-
-  &:hover,
-  &:focus {
-    color: white;
-    background: $bg;
-  }
-}
-
 body {
   margin: 0;
   padding: 0;

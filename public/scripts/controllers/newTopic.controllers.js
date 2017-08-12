@@ -13,8 +13,6 @@ angular.module('msgApp').controller('NewTopicController', [
         created_by: localStorage.user_id
       };
 
-      console.log(newTopic.color);
-
       TopicsService.createNewTopic(newTopic);
       $window.location.href = '/topics';
     };
