@@ -2,11 +2,11 @@
 const Sequelize = require('sequelize');
 const Users = require('./users');
 const Messages = require('./messages');
-const Categories = require('./categories');
 
 module.exports = function(sequelize, DataTypes) {
   var Topics = sequelize.define('topics', {
-    name: { type: DataTypes.STRING, allowNull: false, unique: true }
+    name: { type: DataTypes.STRING, allowNull: false, unique: true },
+    color: { type: DataTypes.STRING(6), allowNull: false, unique: true }
   });
 
   Topics.associate = function(models) {
@@ -19,12 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     Topics.hasMany(models.messages, {
       foreignKey: {
         name: 'topic_id',
-        allowNull: false
-      }
-    });
-    Topics.belongsTo(models.categories, {
-      foreignKey: {
-        name: 'category_id',
         allowNull: false
       }
     });

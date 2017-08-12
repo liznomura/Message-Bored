@@ -44,6 +44,7 @@ router.get("/topics/:id", (req, res) => {
 router.post("/topics", (req, res) => {
   return Topics.create({
     name: req.body.name,
+    color: req.body.color,
     created_by: req.body.created_by
   }).then(topic => {
     return res.json(topic);

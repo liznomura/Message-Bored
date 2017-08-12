@@ -4,6 +4,6 @@ msgApp.controller(
     $scope.createNewUser = function() {
       var user = { name: $scope.user.name };
       AuthService.createNewUser(user);
-      $window.location.href = '/login';
+      $window.location.href = '/';
     };
   }]);
