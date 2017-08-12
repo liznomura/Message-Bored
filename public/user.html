@@ -1,0 +1,7 @@
+<h1>{{ user.name }}</h1>
+
+<div class="message" ng-repeat="message in user.messages">
+  <p>msg: {{ message.body }}</p>
+  <small>topic: {{ message.topic_name }}</small>
+  <small>posted on: {{ message.createdAt }}</small>
+</div>

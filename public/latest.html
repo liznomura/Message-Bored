@@ -1,0 +1,6 @@
+<div ng-repeat="message in messages">
+  <a ng-href="/topics/{{ message.topic.id }}"><button class="topicBtn" style="background: #{{message.topic.color}}">{{ message.topic.name }}</button></a>
+  {{ message.body }}
+  <br />
+  <small>created on {{ message.createdAt }} by {{ message.user.name }}</small>
+</div>

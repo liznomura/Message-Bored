@@ -1,0 +1,9 @@
+<div ng-if="messages.length == 0">No messages to display.</div>
+<div ng-if="messages.length > 0">
+  <h1>{{ messages[0].topic.name }}</h1>
+
+  <div ng-repeat="message in messages">
+    <p>{{ message.body }}</p>
+    <small>created on {{ message.createdAt }} by {{ message.user.name }}</small>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<h1>{{ topic.name }}</h1>
+<small>created on: {{ topic.createdAt }} by {{ topic.creator }}</small>
+
+<div class="message" ng-repeat="message in topicMessages">
+  <p>msg: {{ message.body }}</p>
+  <small>posted on: {{ message.createdAt }} by {{ message.user.name }}</small>
+</div>
