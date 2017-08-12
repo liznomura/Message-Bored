@@ -70,7 +70,9 @@ button {
   }
 
   &[class*="topicBtn"] {
-    @include btn-bg(#93939B);
+    border: none;
+    opacity: 0.8;
+    color: white;
   }
 }
 

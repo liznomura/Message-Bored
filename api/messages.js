@@ -16,7 +16,7 @@ router.get('/messages/latest', (req, res) => {
   return Messages.findAll({
     attributes: ['id', 'body', 'createdAt'],
     include: [
-      { model: Topics, attributes: ['name', 'color'] },
+      { model: Topics, attributes: ['id', 'name', 'color'] },
       { model: Users, attributes: ['name'] }
     ],
     limit: 10,
@@ -43,7 +43,7 @@ router.get('/messages/by-topic/:topic_id', (req, res) => {
     attributes: ['id', 'body', 'createdAt'],
     include: [
       { model: Users, attributes: ['name'] },
-      { model: Topics, attributes: ['name', 'color'] }
+      { model: Topics, attributes: ['id', 'name', 'color'] }
     ],
     order: [['createdAt']]
   }).then(result => {

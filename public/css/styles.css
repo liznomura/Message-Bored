@@ -35,11 +35,8 @@ button {
     color: #ff9697; }
   button[class*="topicBtn"] {
     border: none;
-    background: rgba(147, 147, 155, 0.8);
+    opacity: 0.8;
     color: white; }
-    button[class*="topicBtn"]:hover, button[class*="topicBtn"]:focus {
-      color: white;
-      background: #93939B; }
 
 a {
   color: #8b8b8b;
